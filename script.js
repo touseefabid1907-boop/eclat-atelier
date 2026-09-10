@@ -256,4 +256,13 @@
   } else {
     waitForBrandAutocomplete(0);
   }
+
+  // Modal close handling: the storefront uses .modal and .open.
+  var modal = document.querySelector('.modal');
+  var closeBtn = document.querySelector('.modal-close');
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', function () {
+      modal.classList.remove('open');
+    });
+  }
 })();
