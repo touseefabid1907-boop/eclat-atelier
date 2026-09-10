@@ -80,8 +80,14 @@
     }
     const image = hero.querySelector('.hero-bottles img');
     if (image) {
-      image.src = 'hero-bottles.png';
+      // Use a cache-busted relative asset so GitHub Pages/custom-domain deployments fetch the real PNG.
+      image.src = './hero-bottles.png?v=20260910-2';
       image.alt = 'Creed Aventus and Louis Vuitton Imagination';
+      image.loading = 'eager';
+      image.decoding = 'async';
+      image.onerror = function () {
+        image.src = 'https://raw.githubusercontent.com/touseefabid1907-boop/eclat-atelier/main/hero-bottles.png?v=20260910-2';
+      };
     }
   }
 
