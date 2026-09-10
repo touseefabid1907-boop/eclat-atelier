@@ -8,7 +8,7 @@
       if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return false;
       PRODUCTS.forEach(function (product) {
         if (!product || typeof product !== 'object') return;
-        if (typeof product.image !== 'string' || !product.image.trim() || /^https?:\/\//i.test(product.image)) {
+        if (typeof product.image !== 'string' || !product.image.trim()) {
           product.image = FALLBACK_IMAGE;
         }
       });
