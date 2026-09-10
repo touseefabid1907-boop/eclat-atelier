@@ -146,3 +146,31 @@ p {
     padding: 0 6vw;
   }
 }
+
+/* Premium Brand Story */
+.brand-story {
+  padding: 80px 0;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.brand-story-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.brand-story-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.brand-story-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+}
