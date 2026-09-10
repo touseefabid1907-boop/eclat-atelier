@@ -89,7 +89,7 @@
              'function safeEclatWishlist(){try{var v=JSON.parse(localStorage.getItem("eclatWishlist")||"[]");return Array.isArray(v)?v:[]}catch(_){return []}}\n' + code;
     }
     if (file === 'image-fixes.js') {
-      code = code.replace(/typeof product\.image !== 'string' \|\| !product\.image\.trim\(\) \|\| \/\^https\?:\\\/\\\//i\.test\(product\.image\)/, 'typeof product.image !== \'string\' || !product.image.trim()');
+      code = code.replace("if (typeof product.image !== 'string' || !product.image.trim() || /^https?:\\/\\//i.test(product.image)) {", "if (typeof product.image !== 'string' || !product.image.trim()) {");
     }
     return code;
   }
