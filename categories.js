@@ -32,13 +32,18 @@
       .collections .section-head .eyebrow{font-size:8px;letter-spacing:.22em}
       .collections .section-head h2{margin-top:8px}
       .collection-grid{gap:10px}
-      .collection-card{position:relative;overflow:hidden;background-position:center;background-size:cover;background-repeat:no-repeat;isolation:isolate;min-height:285px;border:0}
-      .collection-card:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(25,22,18,.62),rgba(25,22,18,.12) 70%,rgba(25,22,18,.32));z-index:-1}
-      .collection-card:after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.08);z-index:-1;pointer-events:none}
-      .collection-dark{background-image:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1000&q=82')!important}
-      .collection-sand{background-image:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=82')!important}
-      .collection-olive{background-image:url('https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=1000&q=82')!important}
-      .collection-rose{background-image:url('https://images.unsplash.com/photo-1519671282421-9c7f3a3f1f8f?auto=format&fit=crop&w=1000&q=82')!important}
+      .collection-card{position:relative;overflow:hidden;min-height:285px;border:0;background-position:center;background-size:cover;background-repeat:no-repeat;isolation:isolate}
+      .collection-card:before{content:'';position:absolute;inset:0;z-index:-1;opacity:.96}
+      .collection-card:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 45%,rgba(0,0,0,.16))}
+      /* Reliable inline CSS artwork — no third-party image host is required. */
+      .collection-dark{background-image:radial-gradient(ellipse at 22% 25%,rgba(119,89,61,.58),transparent 28%),radial-gradient(ellipse at 78% 75%,rgba(74,48,31,.6),transparent 35%),repeating-linear-gradient(8deg,rgba(30,20,14,.9) 0 9px,rgba(78,53,36,.95) 10px 17px,rgba(34,23,17,.95) 18px 27px,rgba(103,72,48,.75) 28px 34px);background-color:#2b1d15!important}
+      .collection-dark:before{background:linear-gradient(90deg,transparent,rgba(196,155,110,.16) 48%,transparent 62%),repeating-linear-gradient(173deg,transparent 0 24px,rgba(220,177,128,.12) 25px 27px,transparent 28px 47px)}
+      .collection-sand{background-image:radial-gradient(ellipse at 18% 30%,rgba(255,255,255,.95) 0 9%,transparent 28%),radial-gradient(ellipse at 72% 38%,rgba(255,250,242,.9) 0 11%,transparent 31%),radial-gradient(ellipse at 50% 82%,rgba(239,223,205,.95) 0 14%,transparent 35%),linear-gradient(135deg,#b7a596,#ded0c1 48%,#a99788)!important;background-color:#cbbbae!important}
+      .collection-sand:before{background:radial-gradient(ellipse at 28% 20%,rgba(255,255,255,.9) 0 3%,transparent 4% 100%),radial-gradient(ellipse at 68% 63%,rgba(255,255,255,.75) 0 4%,transparent 5% 100%),linear-gradient(115deg,transparent 35%,rgba(125,101,85,.12) 36% 37%,transparent 38% 100%);filter:blur(2px)}
+      .collection-olive{background-image:radial-gradient(circle at 18% 25%,rgba(211,220,164,.72) 0 7%,transparent 8%),radial-gradient(circle at 78% 72%,rgba(185,199,133,.7) 0 8%,transparent 9%),linear-gradient(135deg,#697451,#9a9e68 46%,#4c5b3f)!important;background-color:#697451!important}
+      .collection-olive:before{background:repeating-linear-gradient(118deg,transparent 0 31px,rgba(37,55,29,.22) 32px 35px,transparent 36px 66px),repeating-linear-gradient(24deg,transparent 0 42px,rgba(225,219,157,.16) 43px 46px,transparent 47px 85px)}
+      .collection-rose{background-image:radial-gradient(circle at 26% 35%,rgba(255,221,174,.9) 0 7%,transparent 8%),radial-gradient(circle at 69% 27%,rgba(235,184,111,.82) 0 8%,transparent 9%),radial-gradient(circle at 78% 78%,rgba(157,91,42,.75) 0 11%,transparent 12%),linear-gradient(135deg,#4a2b1b,#9a5f2d 52%,#3a2419)!important;background-color:#56301c!important}
+      .collection-rose:before{background:repeating-linear-gradient(28deg,transparent 0 28px,rgba(242,184,103,.16) 29px 35px,transparent 36px 58px),repeating-linear-gradient(152deg,transparent 0 37px,rgba(255,219,143,.12) 38px 43px,transparent 44px 71px)}
       .collection-card>span:first-child{display:none}
       .collection-card strong{position:relative;z-index:2;text-shadow:0 2px 18px rgba(0,0,0,.22)}
       .collection-card small{position:relative;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.2)}
@@ -78,16 +83,15 @@
       trust.className = 'eclat-why';
       trust.innerHTML = '<div class="eclat-why-title">WHY ÉCLAT ATELIER</div><div class="eclat-why-list"><span>Authentic original fragrances</span><span>Secure atomisers</span><span>Curated by scent profile</span></div>';
     }
+    /* Keep the original embedded artwork in index.html. It is the most reliable source and cannot 404. */
     const image = hero.querySelector('.hero-bottles img');
     if (image) {
-      // Use a cache-busted relative asset so GitHub Pages/custom-domain deployments fetch the real PNG.
-      image.src = './hero-bottles.png?v=20260910-2';
       image.alt = 'Creed Aventus and Louis Vuitton Imagination';
       image.loading = 'eager';
       image.decoding = 'async';
-      image.onerror = function () {
-        image.src = 'https://raw.githubusercontent.com/touseefabid1907-boop/eclat-atelier/main/hero-bottles.png?v=20260910-2';
-      };
+      image.style.display = 'block';
+      image.style.visibility = 'visible';
+      image.onerror = function () { image.style.display = 'block'; };
     }
   }
 
