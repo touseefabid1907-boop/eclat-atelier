@@ -1,0 +1,112 @@
+const PRODUCTS = [
+{id:1,name:"Sauvage Eau de Parfum",house:"Dior",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Bergamot · Vanilla · Patchouli",tone:1,featured:true,image:"https://www.dior.com/on/demandware.static/-/Sites-master_dior/default/dw6d1f6b9a/Y0785220/FRAGRANCE/DIOR_SAUVAGE_EAU_DE_PARFUM_100ML_Y0785220_01.jpg"},
+{id:2,name:"Miss Dior Eau de Parfum",house:"Dior",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Rose · Peony · Vanilla · Woods",tone:5,image:"https://www.dior.com/on/demandware.static/-/Sites-master_dior/default/dw1f8c0d4e/Y0996150/FRAGRANCE/DIOR_MISS_DIor_EAU_DE_PARFUM_100ML_Y0996150_01.jpg"},
+{id:3,name:"J'adore Eau de Parfum",house:"Dior",type:"designer",gender:"Women",tags:["floral"],notes:"Ylang-Ylang · Jasmine · Rose",tone:5,image:"https://www.dior.com/on/demandware.static/-/Sites-master_dior/default/dw3d4e6c45/Y0715260/FRAGRANCE/DIOR_JADORE_EAU_DE_PARFUM_100ML_Y0715260_01.jpg"},
+{id:4,name:"Coco Mademoiselle",house:"Chanel",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Orange · Rose · Patchouli · Tonka",tone:3,featured:true,image:"https://www.chanel.com/images/q_auto:good,f_auto,dpr_1.0/w_640,c_scale,c_limit/COCO-MADEMOISELLE-EAU-DE-PARFUM-REFILLABLE-spray-3-4FL-OZ--packshot-default-116520-884014.jpg"},
+{id:5,name:"Bleu de Chanel Eau de Parfum",house:"Chanel",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Citrus · Cedar · Sandalwood",tone:7,image:"https://www.chanel.com/images/q_auto:good,f_auto,dpr_1.0/w_640,c_scale,c_limit/BLEU-DE-CHANEL-EAU-DE-PARFUM-spray-3-4FL-OZ--packshot-default-107360-883869.jpg"},
+{id:6,name:"N°5 Eau de Parfum",house:"Chanel",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Aldehydes · Rose · Jasmine · Vanilla",tone:2,image:"https://www.chanel.com/images/q_auto:good,f_auto,dpr_1.0/w_640,c_scale,c_limit/N5-EAU-DE-PARFUM-spray-3-4FL-OZ--packshot-default-105530-884022.jpg"},
+{id:7,name:"Black Opium Eau de Parfum",house:"Yves Saint Laurent",type:"designer",gender:"Women",tags:["amber","floral"],notes:"Coffee · Vanilla · White Flowers",tone:4,featured:true,image:"https://www.yslbeauty.ca/dw/image/v2/BBTN_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw5c7e9c0a/WW-40701YSL/WW-40701YSL_1.jpg"},
+{id:8,name:"Libre Eau de Parfum",house:"Yves Saint Laurent",type:"designer",gender:"Women",tags:["floral","fresh"],notes:"Lavender · Orange Blossom · Vanilla",tone:5,image:"https://www.yslbeauty.ca/dw/image/v2/BBTN_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw5c6b4a1e/WW-44334YSL/WW-44334YSL_1.jpg"},
+{id:9,name:"Y Eau de Parfum",house:"Yves Saint Laurent",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Apple · Sage · Cedarwood",tone:7,image:"https://www.yslbeauty.ca/dw/image/v2/BBTN_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw4e8a8a15/WW-51052YSL/WW-51052YSL_1.jpg"},
+{id:10,name:"Eros Eau de Toilette",house:"Versace",type:"designer",gender:"Men",tags:["fresh","amber"],notes:"Mint · Green Apple · Tonka",tone:3,image:"https://www.versace.com/dw/image/v2/BJQX_PRD/on/demandware.static/-/Sites-versace-master-catalog/default/dw0f0c4c31/1003498-1A03091_2.jpg"},
+{id:11,name:"Dylan Blue",house:"Versace",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Bergamot · Grapefruit · Incense · Musk",tone:7},
+{id:12,name:"Dylan Purple",house:"Versace",type:"designer",gender:"Women",tags:["floral","fresh"],notes:"Bergamot · Freesia · Belaroma",tone:5},
+{id:13,name:"English Pear & Freesia",house:"Jo Malone London",type:"niche",gender:"Unisex",tags:["floral","fresh"],notes:"King William Pear · Freesia · Patchouli",tone:5,image:"https://www.jomalone.com/media/export/cms/products/1000x1000/jo_sku_L1N001_1000x1000_0.png"},
+{id:14,name:"Wood Sage & Sea Salt",house:"Jo Malone London",type:"niche",gender:"Unisex",tags:["fresh","woody"],notes:"Ambrette · Sea Salt · Sage",tone:7},
+{id:15,name:"Myrrh & Tonka",house:"Jo Malone London",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Myrrh · Vanilla · Tonka · Almond",tone:8},
+{id:16,name:"Aventus",house:"Creed",type:"niche",gender:"Men",tags:["fresh","woody"],notes:"Pineapple · Birch · Musk · Oakmoss",tone:1,featured:true,image:"https://www.creedfragrance.com/dw/image/v2/AAQP_PRD/on/demandware.static/-/Sites-creed-master-catalog/default/dw4b6a2d7e/aventus-100ml.jpg"},
+{id:17,name:"Original Santal",house:"Creed",type:"niche",gender:"Unisex",tags:["woody","amber"],notes:"Sandalwood · Cedar · Tonka Bean",tone:1,image:"https://www.creedperfume.com.au/cdn/shop/files/originalsantal100mlpdp_1400x.png?v=1739490235"},
+{id:18,name:"Baccarat Rouge 540",house:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Saffron · Jasmine · Amberwood · Cedar",tone:4,featured:true},
+{id:19,name:"Gentle Fluidity Gold",house:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["amber","floral"],notes:"Juniper · Coriander · Vanilla · Musk",tone:8},
+{id:20,name:"Imagination",house:"Louis Vuitton",type:"niche",gender:"Unisex",tags:["fresh","amber"],notes:"Amber · Black Tea · Bergamot",tone:3,featured:true,image:"https://la.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-perfumes-imagination--LP0221_PM1_WornView.jpg"},
+{id:21,name:"Afternoon Swim",house:"Louis Vuitton",type:"niche",gender:"Unisex",tags:["fresh"],notes:"Orange · Bergamot · Ginger",tone:7},
+{id:22,name:"Oud Wood",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Oud · Rosewood · Cardamom · Amber",tone:8,featured:true},
+{id:23,name:"Lost Cherry",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["amber","floral"],notes:"Black Cherry · Tonka · Almond",tone:5},
+{id:24,name:"Neroli Portofino",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["fresh"],notes:"Neroli · Bergamot · Orange Blossom",tone:7},
+{id:25,name:"Santal 33",house:"Le Labo",type:"niche",gender:"Unisex",tags:["woody"],notes:"Sandalwood · Cedar · Leather · Cardamom",tone:1,featured:true},
+{id:26,name:"Another 13",house:"Le Labo",type:"niche",gender:"Unisex",tags:["fresh","woody"],notes:"Ambrette · Moss · Jasmine · Musk",tone:2},
+{id:27,name:"Bergamote 22",house:"Le Labo",type:"niche",gender:"Unisex",tags:["fresh"],notes:"Bergamot · Grapefruit · Vetiver · Amber",tone:7},
+{id:28,name:"Delina",house:"Parfums de Marly",type:"niche",gender:"Women",tags:["floral","fresh"],notes:"Lychee · Rose · Rhubarb · Vanilla",tone:5,featured:true},
+{id:29,name:"Layton",house:"Parfums de Marly",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Apple · Lavender · Vanilla · Pepper",tone:8},
+{id:30,name:"Herod",house:"Parfums de Marly",type:"niche",gender:"Men",tags:["woody","amber"],notes:"Cinnamon · Tobacco · Vanilla · Cedar",tone:4},
+{id:31,name:"Oud Satin Mood",house:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["floral","amber"],notes:"Rose · Violet · Oud · Vanilla",tone:5},
+{id:32,name:"Gentleman Givenchy EDP",house:"Givenchy",type:"designer",gender:"Men",tags:["woody","amber"],notes:"Black Pepper · Iris · Vanilla · Tolu",tone:4},
+{id:33,name:"L'Interdit Eau de Parfum",house:"Givenchy",type:"designer",gender:"Women",tags:["floral","woody"],notes:"Orange Blossom · Tuberose · Patchouli",tone:5},
+{id:34,name:"Armani Code Parfum",house:"Giorgio Armani",type:"designer",gender:"Men",tags:["woody","fresh"],notes:"Bergamot · Iris · Tonka · Cedar",tone:7},
+{id:35,name:"My Way Eau de Parfum",house:"Giorgio Armani",type:"designer",gender:"Women",tags:["floral","fresh"],notes:"Orange Blossom · Tuberose · Vanilla",tone:5},
+{id:36,name:"Acqua di Giò Profondo",house:"Giorgio Armani",type:"designer",gender:"Men",tags:["fresh"],notes:"Marine Notes · Cypress · Rosemary · Musk",tone:7},
+{id:37,name:"La Vie Est Belle",house:"Lancôme",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Iris · Jasmine · Vanilla · Praline",tone:5},
+{id:38,name:"Idôle",house:"Lancôme",type:"designer",gender:"Women",tags:["floral","fresh"],notes:"Rose · Jasmine · Pear · Musk",tone:3},
+{id:39,name:"Good Girl",house:"Carolina Herrera",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Almond · Tuberose · Tonka · Cocoa",tone:4,featured:true},
+{id:40,name:"212 VIP Men",house:"Carolina Herrera",type:"designer",gender:"Men",tags:["fresh","amber"],notes:"Vodka · Passion Fruit · Tonka · Amber",tone:8},
+{id:41,name:"Born in Roma Donna",house:"Valentino",type:"designer",gender:"Women",tags:["floral","amber"],notes:"Jasmine · Vanilla · Cashmeran",tone:5},
+{id:42,name:"Born in Roma Uomo",house:"Valentino",type:"designer",gender:"Men",tags:["woody","fresh"],notes:"Mineral Salt · Ginger · Vetiver",tone:7},
+{id:43,name:"Libre Le Parfum",house:"Yves Saint Laurent",type:"designer",gender:"Women",tags:["amber","floral"],notes:"Lavender · Saffron · Orange Blossom · Vanilla",tone:8},
+{id:44,name:"Omnia Crystalline",house:"Bvlgari",type:"designer",gender:"Women",tags:["fresh","floral"],notes:"Bamboo · Lotus · Musk · Pear",tone:3},
+{id:45,name:"Man in Black",house:"Bvlgari",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Rum · Leather · Benzoin · Tonka",tone:4},
+{id:46,name:"Black Orchid",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["floral","amber"],notes:"Truffle · Orchid · Patchouli · Dark Chocolate",tone:2},
+{id:47,name:"Molecule 01",house:"Escentric Molecules",type:"niche",gender:"Unisex",tags:["woody"],notes:"Iso E Super · Velvety Woods",tone:6},
+{id:48,name:"Mojave Ghost",house:"Byredo",type:"niche",gender:"Unisex",tags:["floral","woody"],notes:"Ambrette · Violet · Sandalwood · Cedar",tone:5},
+{id:49,name:"Bal d'Afrique",house:"Byredo",type:"niche",gender:"Unisex",tags:["fresh","woody"],notes:"Bergamot · African Marigold · Cedarwood",tone:3},
+{id:50,name:"Gypsy Water",house:"Byredo",type:"niche",gender:"Unisex",tags:["woody","fresh"],notes:"Juniper · Lemon · Incense · Pine",tone:7}
+];
+const SIZES={2:{label:"2ml",price:8},5:{label:"5ml",price:20},10:{label:"10ml",price:30}};
+let cart=JSON.parse(localStorage.getItem("eclatCart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("eclatWishlist")||"[]");
+let currentFilter="all", currentGender="all", currentHouse="all", searchTerm="";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const money=n=>`€${n.toFixed(0)}`;
+function save(){localStorage.setItem("eclatCart",JSON.stringify(cart));localStorage.setItem("eclatWishlist",JSON.stringify(wishlist));}
+function product(id){return PRODUCTS.find(p=>p.id===Number(id));}
+function selectedPrice(size){return SIZES[size].price;}
+function initBrandDirectory(){
+ const brands=[...new Set(PRODUCTS.map(p=>p.house))].sort();
+ $("#brandFilter").innerHTML='<option value="all">All brands</option>'+brands.map(b=>`<option value="${b}">${b}</option>`).join("");
+ $("#brandDirectory").innerHTML='<button class="brand-chip active" data-brand="all">All brands</button>'+brands.map(b=>`<button class="brand-chip" data-brand="${b}">${b}</button>`).join("");
+ $$(".brand-chip").forEach(b=>b.onclick=()=>{currentHouse=b.dataset.brand;$("#brandFilter").value=currentHouse;$$('.brand-chip').forEach(x=>x.classList.toggle('active',x===b));renderProducts();document.querySelector('#productGrid').scrollIntoView({behavior:'smooth',block:'start'});});
+}
+function renderProducts(){
+ let list=PRODUCTS.filter(p=>{
+  const filterOk=currentFilter==="all"||p.type===currentFilter||p.tags.includes(currentFilter);
+  const genderOk=currentGender==="all"||p.gender===currentGender;
+  const houseOk=currentHouse==="all"||p.house===currentHouse;
+  const q=searchTerm.toLowerCase();
+  const searchOk=!q||[p.name,p.house,p.type,p.gender,p.notes,...p.tags].join(" ").toLowerCase().includes(q);
+  return filterOk&&genderOk&&houseOk&&searchOk;
+ });
+ const sort=$("#sortSelect").value;
+ if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+ if(sort==="brand")list.sort((a,b)=>a.house.localeCompare(b.house)||a.name.localeCompare(b.name));
+ if(sort==="featured")list.sort((a,b)=>Number(b.featured)-Number(a.featured)||a.house.localeCompare(b.house));
+ $("#resultsCount").textContent=`${list.length} fragrance${list.length===1?"":"s"}`;
+ $("#productGrid").innerHTML=list.length?list.map(cardHTML).join(""):`<div class="no-results"><h3>No scents found.</h3><p>Try another search or reset the filters.</p><button class="btn btn-dark" onclick="resetFilters()">Reset filters</button></div>`;
+ $$(".add-btn").forEach(b=>b.onclick=()=>addToCart(b.dataset.id,b.parentElement.querySelector(".size-select").value));
+ $$(".quick-btn").forEach(b=>b.onclick=()=>openQuick(b.dataset.id));
+ $$(".wish").forEach(b=>b.onclick=()=>toggleWish(b.dataset.id,b));
+}
+function cardHTML(p){
+ const wished=wishlist.includes(p.id);
+ const visual=p.image?`<img class="product-image" src="${p.image}" alt="${p.house} ${p.name} perfume bottle" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">`:`<div class="photo-fallback"><strong>${p.house}</strong><span>${p.name}</span></div>`;
+ return `<article class="product-card"><div class="product-visual tone-${p.tone}" onclick="openQuick(${p.id})">${p.featured?'<span class="badge">Featured</span>':''}<button class="wish ${wished?'active':''}" data-id="${p.id}" aria-label="Wishlist">${wished?'♥':'♡'}</button>${visual}</div><div class="product-info"><div class="product-top"><div><h3 class="product-name">${p.name}</h3><p class="product-house">${p.house} · ${p.gender}</p></div><span class="product-price">from €8</span></div><p class="notes">${p.notes}</p><div class="product-actions"><select class="size-select" aria-label="Choose size">${Object.entries(SIZES).map(([k,v])=>`<option value="${k}">${v.label} · ${money(v.price)}</option>`).join("")}</select><button class="btn btn-dark add-btn" data-id="${p.id}">Add</button><button class="quick-btn" data-id="${p.id}" aria-label="Quick view">+</button></div></div></article>`;
+}
+function toggleWish(id){id=Number(id);wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];save();renderProducts();$("#wishlistCount").textContent=wishlist.length;toast(wishlist.includes(id)?"Added to wishlist":"Removed from wishlist")}
+function addToCart(id,size){id=Number(id);size=Number(size);const key=`${id}-${size}`;const existing=cart.find(x=>x.key===key);if(existing)existing.qty++;else cart.push({key,id,size,qty:1});save();renderCart();openCart();toast("Added to your bag")}
+function changeQty(key,delta){const item=cart.find(x=>x.key===key);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);save();renderCart()}
+function removeItem(key){cart=cart.filter(x=>x.key!==key);save();renderCart();toast("Removed from your bag")}
+function cartTotal(){return cart.reduce((sum,x)=>sum+selectedPrice(x.size)*x.qty,0)}
+function renderCart(){const total=cartTotal(),count=cart.reduce((s,x)=>s+x.qty,0);$("#cartCount").textContent=count;$("#cartSubtotal").textContent=money(total);$("#shippingNote").textContent=total>=75?"Complimentary shipping unlocked.":"Shipping calculated at checkout.";$("#cartItems").innerHTML=cart.map(x=>{const p=product(x.id);return `<div class="cart-row"><div class="cart-thumb tone-${p.tone}">${p.image?`<img class="cart-product-image" src="${p.image}" alt="${p.name}" loading="lazy">`:''}</div><div><h4>${p.name}</h4><small>${p.house} · ${SIZES[x.size].label}</small><div class="qty"><button onclick="changeQty('${x.key}',-1)">−</button><span>${x.qty}</span><button onclick="changeQty('${x.key}',1)">+</button></div><button class="remove" onclick="removeItem('${x.key}')">Remove</button></div><strong>${money(selectedPrice(x.size)*x.qty)}</strong></div>`}).join("");const empty=!cart.length;$("#emptyCart").style.display=empty?"block":"none";$("#cartItems").style.display=empty?"none":"block";$("#cartFooter").style.display=empty?"none":"block"}
+function openCart(){$("#cartDrawer").classList.add("open");$("#cartDrawer").setAttribute("aria-hidden","false");$("#overlay").classList.add("show")}
+function closeCart(){$("#cartDrawer").classList.remove("open");$("#cartDrawer").setAttribute("aria-hidden","true");$("#overlay").classList.remove("show")}
+function openQuick(id){const p=product(id);$("#quickContent").innerHTML=`<div class="quick-layout"><div class="quick-visual tone-${p.tone}">${p.image?`<img class="quick-product-image" src="${p.image}" alt="${p.house} ${p.name}">`:`<div class="photo-fallback large"><strong>${p.house}</strong><span>${p.name}</span></div>`}</div><div class="quick-copy"><p class="eyebrow">${p.type} · ${p.house} · ${p.gender}</p><h2>${p.name}</h2><p>${p.notes}</p><p>Choose a discovery size and add it to your bag.</p><div class="quick-price">From €8</div><div class="product-actions"><select id="quickSize" class="size-select">${Object.entries(SIZES).map(([k,v])=>`<option value="${k}">${v.label} · ${money(v.price)}</option>`).join("")}</select><button class="btn btn-dark" id="quickAdd">Add to bag</button></div></div></div>`;$("#quickAdd").onclick=()=>{addToCart(id,$("#quickSize").value);closeModal("quickModal")};$("#quickModal").classList.add("open")}
+function closeModal(id){$("#"+id).classList.remove("open")}
+function resetFilters(){currentFilter="all";currentGender="all";currentHouse="all";searchTerm="";$("#searchInput").value="";$("#brandFilter").value="all";$("#genderFilter").value="all";$$(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));renderProducts()}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),1800)}
+function checkout(){if(!cart.length){toast("Your bag is empty");return}const lines=cart.map(x=>{const p=product(x.id);return `${x.qty} × ${p.name} (${SIZES[x.size].label}) — ${money(selectedPrice(x.size))}`}).join("<br>");$("#checkoutSummary").innerHTML=`${lines}<hr><strong>Total: ${money(cartTotal())}</strong>`;$("#checkoutTotal").textContent=money(cartTotal());closeCart();$("#checkoutModal").classList.add("open")}
+$("#cartBtn").onclick=openCart;$("#closeCart").onclick=closeCart;$("#overlay").onclick=closeCart;$("#continueBtn").onclick=closeCart;$("#emptyShop").onclick=closeCart;$("#checkoutBtn").onclick=checkout;
+$("#searchToggle").onclick=()=>{$("#searchPanel").classList.toggle("open");if($("#searchPanel").classList.contains("open"))$("#searchInput").focus()};$("#clearSearch").onclick=()=>{$("#searchInput").value="";searchTerm="";renderProducts()};$("#searchInput").oninput=e=>{searchTerm=e.target.value;renderProducts()};$("#sortSelect").onchange=renderProducts;
+$$('.filter').forEach(b=>b.onclick=()=>{currentFilter=b.dataset.filter;$$('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderProducts()});
+$("#brandFilter").onchange=e=>{currentHouse=e.target.value;renderProducts()};$("#genderFilter").onchange=e=>{currentGender=e.target.value;renderProducts()};
+$$('.collection-card').forEach(b=>b.onclick=()=>{currentFilter=b.dataset.filter;$$('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter===currentFilter));document.querySelector('#shop').scrollIntoView({behavior:'smooth'});renderProducts()});
+$("#resetFilters").onclick=resetFilters;
+$("#wishlistBtn").onclick=()=>{if(!wishlist.length){toast("Your wishlist is empty");return}searchTerm="";currentFilter="all";currentGender="all";currentHouse="all";$("#searchInput").value="";$("#resultsCount").textContent=`${wishlist.length} wishlisted`;$("#productGrid").innerHTML=PRODUCTS.filter(p=>wishlist.includes(p.id)).map(cardHTML).join("");$$('.add-btn').forEach(b=>b.onclick=()=>addToCart(b.dataset.id,b.parentElement.querySelector('.size-select').value));$$('.quick-btn').forEach(b=>b.onclick=()=>openQuick(b.dataset.id));$$('.wish').forEach(b=>b.onclick=()=>toggleWish(b.dataset.id))};
+$("#menuBtn").onclick=()=>$("#mainNav").classList.toggle("open");$$('.modal-close').forEach(b=>b.onclick=()=>b.closest('.modal').classList.remove('open'));$("#checkoutForm").onsubmit=e=>{e.preventDefault();cart=[];save();renderCart();$("#checkoutModal").classList.remove('open');$("#successModal").classList.add('open')};$("#successClose").onclick=()=>{$("#successModal").classList.remove('open');location.hash='#shop'};$("#newsletterForm").onsubmit=e=>{e.preventDefault();$("#newsletterMessage").textContent="You're on the list — welcome to the Scent Letter.";$("#newsletterEmail").value="";toast("Welcome to the Scent Letter")};$$('[data-modal]').forEach(a=>a.onclick=e=>{e.preventDefault();toast(`${a.dataset.modal==='shipping'?'Shipping':'Privacy'} information can be connected to your final store policy.`)});document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();$$('.modal').forEach(m=>m.classList.remove('open'))}});initBrandDirectory();renderProducts();renderCart();$("#wishlistCount").textContent=wishlist.length;
