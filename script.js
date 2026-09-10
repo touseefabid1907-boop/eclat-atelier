@@ -14,7 +14,6 @@
     }
   }
 
-  /* Validate saved state before the legacy catalog reads it. */
   const cartState = safeStorage('eclatCart');
   const wishlistState = safeStorage('eclatWishlist');
   try { localStorage.setItem('eclatCart', JSON.stringify(cartState)); } catch (_) {}
@@ -26,15 +25,12 @@
   function sanitize(source, file) {
     let code = source;
 
-    /* The catalog previously pointed dozens of <img> tags at third-party hosts.
-       Use the built-in CSS bottle fallback instead so a dead image host can never
-       prevent the storefront from rendering or create failed-resource errors. */
+    /* Remove third-party product-image dependencies. The storefront has its own
+       visual fallback, so dead image hosts cannot create failed-resource errors. */
     if (file === 'legacy-script.js' || file === 'categories.js') {
       code = code.replace(/image\s*:\s*(["'])(?:https?:)?\/\/[^"']*\1/g, 'image:""');
     }
 
-    /* Make legacy storage initialization resilient even if another script wrote
-       malformed values between this loader and legacy-script.js. */
     if (file === 'legacy-script.js') {
       code = code.replace(
         /let cart=JSON\.parse\(localStorage\.getItem\("eclatCart"\)\|\|"\[\]"\);/,
@@ -51,16 +47,16 @@
     return code;
   }
 
-  function runSource(source, file, done) {
+  function runSource(source, file) {
     const script = document.createElement('script');
     script.dataset.eclatSrc = file;
     script.text = sanitize(source, file);
-    script.onload = done;
-    script.onerror = function () {
-      console.warn('Éclat Atelier: failed to execute ' + file);
-      done();
-    };
-    document.body.appendChild(script);
+    try {
+      document.body.appendChild(script);
+    } catch (error) {
+      console.warn('Éclat Atelier: failed to execute ' + file, error);
+    }
+    loadNext();
   }
 
   function loadNext() {
@@ -82,17 +78,13 @@
         if (!response.ok) throw new Error(response.status + ' ' + response.statusText);
         return response.text();
       })
-      .then(function (source) { runSource(source, file, loadNext); })
+      .then(function (source) { runSource(source, file); })
       .catch(function (error) {
         console.warn('Éclat Atelier: could not load ' + file, error);
         loadNext();
       });
   }
 
-  function start() {
-    if (document.body) loadNext();
-    else document.addEventListener('DOMContentLoaded', loadNext, { once: true });
-  }
-
-  start();
+  if (document.body) loadNext();
+  else document.addEventListener('DOMContentLoaded', loadNext, { once: true });
 })();
