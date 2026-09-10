@@ -6,32 +6,47 @@
 
   var products = PRODUCTS;
   var originalRenderProducts = typeof renderProducts === 'function' ? renderProducts : null;
-  var nextId = 57;
   var fallbackImage = 'product-fallback.svg';
 
   var additions = [
-    {id:57,name:"Le Male Le Parfum",house:"Jean Paul Gaultier",brand:"Jean Paul Gaultier",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Cardamom · Lavender · Iris · Vanilla",tone:8,image:fallbackImage,featured:false},
-    {id:58,name:"1 Million Eau de Toilette",house:"Rabanne",brand:"Rabanne",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Cinnamon · Leather · Rose · Amber",tone:4,image:fallbackImage,featured:false},
-    {id:59,name:"Light Blue Eau de Toilette",house:"Dolce & Gabbana",brand:"Dolce & Gabbana",type:"designer",gender:"Women",tags:["fresh","floral"],notes:"Sicilian Lemon · Apple · Jasmine · Cedar",tone:7,image:fallbackImage,featured:false},
-    {id:60,name:"Invictus Eau de Toilette",house:"Rabanne",brand:"Rabanne",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Grapefruit · Bay Leaf · Marine Notes · Guaiac Wood",tone:7,image:fallbackImage,featured:false},
-    {id:61,name:"Terre d'Hermès Eau de Toilette",house:"Hermès",brand:"Hermès",type:"designer",gender:"Men",tags:["woody","fresh"],notes:"Orange · Pepper · Vetiver · Cedar",tone:1,image:fallbackImage,featured:false},
-    {id:62,name:"Allure Homme Sport Eau Extrême",house:"Chanel",brand:"Chanel",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Mandarin · Mint · Cypress · Tonka",tone:7,image:fallbackImage,featured:false},
-    {id:63,name:"Stronger With You Intensely",house:"Emporio Armani",brand:"Armani",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Pink Pepper · Toffee · Cinnamon · Vanilla",tone:4,image:fallbackImage,featured:false},
-    {id:64,name:"The Most Wanted Eau de Parfum Intense",house:"Azzaro",brand:"Azzaro",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Cardamom · Toffee · Amberwood",tone:8,image:fallbackImage,featured:false},
-    {id:65,name:"Angels' Share",house:"By Kilian",brand:"Kilian",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Cognac · Cinnamon · Tonka · Oak",tone:8,image:fallbackImage,featured:false},
-    {id:66,name:"XJ 1861 Naxos",house:"Xerjoff",brand:"Xerjoff",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Lemon · Lavender · Honey · Tobacco · Vanilla",tone:4,image:fallbackImage,featured:false},
-    {id:67,name:"Side Effect",house:"Initio Parfums Privés",brand:"Initio",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Tobacco · Rum · Vanilla · Cinnamon",tone:4,image:fallbackImage,featured:false},
-    {id:68,name:"Oud for Greatness",house:"Initio Parfums Privés",brand:"Initio",type:"niche",gender:"Unisex",tags:["woody","amber"],notes:"Saffron · Lavender · Oud · Patchouli",tone:8,image:fallbackImage,featured:false},
-    {id:69,name:"Reflection Man",house:"Amouage",brand:"Amouage",type:"niche",gender:"Men",tags:["floral","woody"],notes:"Rosemary · Neroli · Jasmine · Sandalwood",tone:5,image:fallbackImage,featured:false},
-    {id:70,name:"Hacivat",house:"Nishane",brand:"Nishane",type:"niche",gender:"Unisex",tags:["fresh","woody"],notes:"Pineapple · Bergamot · Jasmine · Oakmoss",tone:1,image:fallbackImage,featured:false},
-    {id:71,name:"Gris Charnel Extrait",house:"BDK Parfums",brand:"BDK",type:"niche",gender:"Unisex",tags:["woody","amber"],notes:"Fig · Black Tea · Cardamom · Sandalwood",tone:8,image:fallbackImage,featured:false},
-    {id:72,name:"Vibrato",house:"Sospiro",brand:"Sospiro",type:"niche",gender:"Unisex",tags:["fresh","floral"],notes:"Grapefruit · Bergamot · Jasmine · Musk",tone:7,image:fallbackImage,featured:false},
-    {id:73,name:"Eclaire",house:"Lattafa",brand:"Lattafa",type:"middle-eastern",gender:"Women",tags:["amber","floral"],notes:"Caramel · Milk · Vanilla · Honey",tone:5,image:fallbackImage,featured:false},
-    {id:74,name:"Bade'e Al Oud Honor & Glory",house:"Lattafa",brand:"Lattafa",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Pineapple · Crème Brûlée · Cinnamon · Vanilla",tone:8,image:fallbackImage,featured:false},
-    {id:75,name:"Oud for Glory",house:"Lattafa",brand:"Lattafa",type:"middle-eastern",gender:"Unisex",tags:["woody","amber"],notes:"Saffron · Nutmeg · Oud · Patchouli",tone:8,image:fallbackImage,featured:false},
-    {id:76,name:"Club de Nuit Untold",house:"Armaf",brand:"Armaf",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Saffron · Jasmine · Amberwood · Cedar",tone:4,image:fallbackImage,featured:false},
-    {id:77,name:"Hawas Ice",house:"Rasasi",brand:"Rasasi",type:"middle-eastern",gender:"Men",tags:["fresh","amber"],notes:"Apple · Lemon · Marine Notes · Musk",tone:7,image:fallbackImage,featured:false},
-    {id:78,name:"L'Aventure",house:"Al Haramain",brand:"Al Haramain",type:"middle-eastern",gender:"Men",tags:["fresh","woody"],notes:"Lemon · Bergamot · Pineapple · Cedar",tone:1,image:fallbackImage,featured:false}
+    /* New featured pick: the existing Khamrah pick is also promoted below so the homepage reaches exactly 12. */
+    {id:79,name:"Sauvage Eau de Parfum",house:"Dior",brand:"Dior",type:"designer",gender:"Men",tags:["fresh","amber"],notes:"Bergamot · Pepper · Lavender · Vanilla",tone:7,image:fallbackImage,featured:true},
+
+    /* Designer — high-demand staples across Dior, Armani, Chanel, Tom Ford and YSL. */
+    {id:80,name:"Sauvage Eau de Toilette",house:"Dior",brand:"Dior",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Bergamot · Pepper · Ambroxan · Cedar",tone:7,image:fallbackImage,featured:false},
+    {id:81,name:"Sauvage Elixir",house:"Dior",brand:"Dior",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Grapefruit · Spices · Lavender · Woods",tone:8,image:fallbackImage,featured:false},
+    {id:82,name:"Acqua di Giò Eau de Toilette",house:"Giorgio Armani",brand:"Armani",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Marine Notes · Bergamot · Rosemary · Cedar",tone:7,image:fallbackImage,featured:false},
+    {id:83,name:"Stronger With You Absolutely",house:"Emporio Armani",brand:"Armani",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Rum · Chestnut · Vanilla · Cedar",tone:8,image:fallbackImage,featured:false},
+    {id:84,name:"Bleu de Chanel Eau de Parfum",house:"Chanel",brand:"Chanel",type:"designer",gender:"Men",tags:["woody","fresh"],notes:"Lemon · Ginger · Cedar · Sandalwood",tone:7,image:fallbackImage,featured:false},
+    {id:85,name:"Chance Eau Tendre Eau de Parfum",house:"Chanel",brand:"Chanel",type:"designer",gender:"Women",tags:["floral","fresh"],notes:"Quince · Rose · Jasmine · Musk",tone:5,image:fallbackImage,featured:false},
+    {id:86,name:"Oud Wood Eau de Parfum",house:"Tom Ford",brand:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Rosewood · Cardamom · Oud · Amber",tone:8,image:fallbackImage,featured:false},
+    {id:87,name:"Tobacco Vanille Eau de Parfum",house:"Tom Ford",brand:"Tom Ford",type:"designer",gender:"Unisex",tags:["amber","woody"],notes:"Tobacco · Vanilla · Cacao · Tonka",tone:4,image:fallbackImage,featured:false},
+    {id:88,name:"Y Eau de Parfum",house:"Yves Saint Laurent",brand:"YSL",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Apple · Ginger · Sage · Cedar",tone:7,image:fallbackImage,featured:false},
+    {id:89,name:"La Nuit de L'Homme Eau de Toilette",house:"Yves Saint Laurent",brand:"YSL",type:"designer",gender:"Men",tags:["amber","woody"],notes:"Cardamom · Lavender · Cedar · Vetiver",tone:8,image:fallbackImage,featured:false},
+
+    /* Niche — iconic, high-demand names from Creed, MFK, Amouage, PDM and Xerjoff. */
+    {id:90,name:"Aventus",house:"Creed",brand:"Creed",type:"niche",gender:"Men",tags:["fresh","woody"],notes:"Pineapple · Bergamot · Birch · Oakmoss",tone:1,image:fallbackImage,featured:false},
+    {id:91,name:"Green Irish Tweed",house:"Creed",brand:"Creed",type:"niche",gender:"Men",tags:["fresh","woody"],notes:"Lemon · Violet Leaf · Iris · Sandalwood",tone:7,image:fallbackImage,featured:false},
+    {id:92,name:"Baccarat Rouge 540 Eau de Parfum",house:"Maison Francis Kurkdjian",brand:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Saffron · Jasmine · Amberwood · Cedar",tone:4,image:fallbackImage,featured:false},
+    {id:93,name:"Grand Soir",house:"Maison Francis Kurkdjian",brand:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Amber · Benzoin · Vanilla · Labdanum",tone:8,image:fallbackImage,featured:false},
+    {id:94,name:"Interlude Man",house:"Amouage",brand:"Amouage",type:"niche",gender:"Men",tags:["amber","woody"],notes:"Oregano · Amber · Incense · Oud",tone:8,image:fallbackImage,featured:false},
+    {id:95,name:"Guidance",house:"Amouage",brand:"Amouage",type:"niche",gender:"Women",tags:["floral","amber"],notes:"Pear · Rose · Frankincense · Sandalwood",tone:5,image:fallbackImage,featured:false},
+    {id:96,name:"Layton",house:"Parfums de Marly",brand:"Parfums de Marly",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Apple · Bergamot · Jasmine · Vanilla",tone:8,image:fallbackImage,featured:false},
+    {id:97,name:"Herod",house:"Parfums de Marly",brand:"Parfums de Marly",type:"niche",gender:"Men",tags:["woody","amber"],notes:"Cinnamon · Tobacco · Vanilla · Cedar",tone:4,image:fallbackImage,featured:false},
+    {id:98,name:"Erba Pura",house:"Xerjoff",brand:"Xerjoff",type:"niche",gender:"Unisex",tags:["fresh","floral"],notes:"Citrus · Fruits · Amber · White Musk",tone:7,image:fallbackImage,featured:false},
+    {id:99,name:"Alexandria II",house:"Xerjoff",brand:"Xerjoff",type:"niche",gender:"Unisex",tags:["woody","amber"],notes:"Apple · Lavender · Cinnamon · Oud",tone:8,image:fallbackImage,featured:false},
+
+    /* Middle Eastern — proven best-sellers from Lattafa, Ajmal, Rasasi, Arabian Oud and Swiss Arabian. */
+    {id:100,name:"Khamrah Qahwa",house:"Lattafa",brand:"Lattafa",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Coffee · Cinnamon · Vanilla · Praline",tone:4,image:fallbackImage,featured:false},
+    {id:101,name:"Mayar",house:"Lattafa",brand:"Lattafa",type:"middle-eastern",gender:"Women",tags:["floral","fresh"],notes:"Lychee · Raspberry · Jasmine · Vanilla",tone:5,image:fallbackImage,featured:false},
+    {id:102,name:"Amber Wood",house:"Ajmal",brand:"Ajmal",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Cardamom · Apple · Lavender · Amber",tone:8,image:fallbackImage,featured:false},
+    {id:103,name:"Evoke Gold",house:"Ajmal",brand:"Ajmal",type:"middle-eastern",gender:"Men",tags:["woody","fresh"],notes:"Lemon · Lavender · Violet · Cedar",tone:7,image:fallbackImage,featured:false},
+    {id:104,name:"Hawas for Him",house:"Rasasi",brand:"Rasasi",type:"middle-eastern",gender:"Men",tags:["fresh","amber"],notes:"Apple · Lemon · Cinnamon · Musk",tone:7,image:fallbackImage,featured:false},
+    {id:105,name:"La Yuqawam Homme",house:"Rasasi",brand:"Rasasi",type:"middle-eastern",gender:"Men",tags:["woody","amber"],notes:"Raspberry · Saffron · Leather · Oud",tone:8,image:fallbackImage,featured:false},
+    {id:106,name:"Kalemat",house:"Arabian Oud",brand:"Arabian Oud",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Caramel · Vanilla · Musk · Amber",tone:4,image:fallbackImage,featured:false},
+    {id:107,name:"Arabian Knight",house:"Arabian Oud",brand:"Arabian Oud",type:"middle-eastern",gender:"Men",tags:["woody","amber"],notes:"Saffron · Leather · Oud · Amber",tone:8,image:fallbackImage,featured:false},
+    {id:108,name:"Shaghaf Oud",house:"Swiss Arabian",brand:"Swiss Arabian",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Saffron · Praline · Rose · Oud",tone:4,image:fallbackImage,featured:false},
+    {id:109,name:"Shaghaf Oud Azraq",house:"Swiss Arabian",brand:"Swiss Arabian",type:"middle-eastern",gender:"Unisex",tags:["amber","woody"],notes:"Honey · Cinnamon · Oud · Vanilla",tone:8,image:fallbackImage,featured:false}
   ];
 
   additions.forEach(function (product) {
@@ -52,6 +67,7 @@
       if (brandSlug === 'maisonfranciskurkdjian') brandSlug = 'mfk';
       if (brandSlug === 'louisvuitton') brandSlug = 'louisvuitton';
       if (brandSlug === 'giorgioarmani' || brandSlug === 'emporioarmani') brandSlug = 'armani';
+      if (brandSlug === 'yvessaintlaurent') brandSlug = 'ysl';
       if (brandSlug && !categories.includes('brand:' + brandSlug)) categories.push('brand:' + brandSlug);
     }
     var gender = String(product.gender || '').toLowerCase();
@@ -63,8 +79,8 @@
 
   products.forEach(normalizeCategories);
 
-  /* Keep the existing ten homepage picks and keep every other perfume discoverable by filters. */
-  var featuredIds = [1,4,7,16,18,20,22,25,28,39];
+  /* Exactly 12 homepage picks: 11 existing/promoted picks + one new Dior featured perfume. */
+  var featuredIds = [1,4,7,16,18,20,22,25,28,39,51,79];
   products.forEach(function (product) {
     product.featured = featuredIds.indexOf(product.id) !== -1;
   });
