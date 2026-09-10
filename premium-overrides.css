@@ -233,3 +233,11 @@ p {
 section {
   scroll-margin-top: 80px;
 }
+
+.brand-story-text {
+  font-size: 18px;
+  line-height: 1.75;
+  color: #333;
+  max-width: 750px;
+  margin: 0 auto;
+}
