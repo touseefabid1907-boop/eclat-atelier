@@ -96,3 +96,13 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
 })();
+
+/* The hero image must use the real repository PNG, not the old inline data URI. */
+(function () {
+  function setHeroImage() {
+    const hero = document.querySelector('.hero-bottles img');
+    if (hero) hero.src = 'hero-bottles.png';
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setHeroImage);
+  else setHeroImage();
+})();
