@@ -257,12 +257,16 @@
     waitForBrandAutocomplete(0);
   }
 
-  // Modal close handling: the storefront uses .modal and .open.
-  var modal = document.querySelector('.modal');
-  var closeBtn = document.querySelector('.modal-close');
-  if (closeBtn && modal) {
-    closeBtn.addEventListener('click', function () {
-      modal.classList.remove('open');
+  // Modal close handling: every .modal-close button closes its corresponding .modal.
+  const modals = document.querySelectorAll('.modal');
+  const closeButtons = document.querySelectorAll('.modal-close');
+
+  closeButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      const modal = modals[index];
+      if (modal) {
+        modal.classList.remove('open');
+      }
     });
-  }
+  });
 })();
