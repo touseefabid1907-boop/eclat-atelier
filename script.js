@@ -169,4 +169,91 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, {once:true});
   else boot();
+
+  // Brand autocomplete: uses the complete product catalog without changing rendering functions.
+  function initBrandAutocomplete() {
+    var searchInput = document.getElementById('searchInput');
+    var searchInner = document.querySelector('.search-inner');
+    if (!searchInput || !searchInner || typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return false;
+
+    const products = PRODUCTS.map(function (p) {
+      return Object.assign({brand: p && (p.brand || p.house || '')}, p);
+    });
+    const brandList = [...new Set(products.map(p => p.brand.toLowerCase()).filter(Boolean))].sort();
+
+    var suggestions = document.getElementById('brandSuggestions');
+    if (!suggestions) {
+      suggestions = document.createElement('div');
+      suggestions.id = 'brandSuggestions';
+      suggestions.className = 'brand-suggestions';
+      suggestions.setAttribute('role', 'listbox');
+      searchInner.appendChild(suggestions);
+    }
+
+    function hideSuggestions() {
+      suggestions.innerHTML = '';
+      suggestions.hidden = true;
+    }
+
+    function filterByBrand(brand) {
+      var brandFilter = document.getElementById('brandFilter');
+      if (brandFilter) {
+        var target = String(brand || '').toLowerCase();
+        var option = Array.prototype.find.call(brandFilter.options, function (item) {
+          return String(item.textContent || item.value).toLowerCase() === target || String(item.value).toLowerCase() === target;
+        });
+        if (!option) {
+          option = document.createElement('option');
+          option.value = brand;
+          option.textContent = brand;
+          brandFilter.appendChild(option);
+        }
+        brandFilter.value = option.value;
+        brandFilter.dispatchEvent(new Event('change', {bubbles:true}));
+      }
+      searchInput.value = brand;
+      hideSuggestions();
+    }
+
+    searchInput.addEventListener('input', function () {
+      var query = searchInput.value.trim().toLowerCase();
+      if (!query) {
+        hideSuggestions();
+        return;
+      }
+
+      var matches = brandList.filter(function (brand) { return brand.indexOf(query) === 0; });
+      suggestions.innerHTML = matches.map(function (brand) {
+        var label = products.find(function (p) { return p.brand.toLowerCase() === brand; });
+        return '<div role="option" data-brand="' + escapeHTML(brand) + '">' + escapeHTML(label ? label.brand : brand) + '</div>';
+      }).join('');
+      suggestions.hidden = matches.length === 0;
+    });
+
+    suggestions.addEventListener('mousedown', function (event) {
+      var item = event.target.closest('[data-brand]');
+      if (!item) return;
+      event.preventDefault();
+      filterByBrand(item.getAttribute('data-brand'));
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!searchInner.contains(event.target)) hideSuggestions();
+    });
+
+    var clearSearch = document.getElementById('clearSearch');
+    if (clearSearch) clearSearch.addEventListener('click', hideSuggestions);
+    return true;
+  }
+
+  function waitForBrandAutocomplete(attempt) {
+    if (initBrandAutocomplete() || attempt >= 100) return;
+    setTimeout(function () { waitForBrandAutocomplete(attempt + 1); }, 100);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { waitForBrandAutocomplete(0); }, {once:true});
+  } else {
+    waitForBrandAutocomplete(0);
+  }
 })();
