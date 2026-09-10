@@ -1,18 +1,34 @@
-/* Éclat Atelier — image synchronization safety layer */
+/* Éclat Atelier — optional image synchronization safety layer */
 (function () {
+  'use strict';
   function sync() {
-    if (typeof PRODUCTS === 'undefined' || typeof renderProducts !== 'function') return false;
-    /* Product images are defined with each catalog entry. This file intentionally
-       does not overwrite them or assume PRODUCTS exists before legacy-script.js. */
-    renderProducts();
-    if (typeof renderCart === 'function') renderCart();
-    return true;
+    try {
+      if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return false;
+      PRODUCTS.forEach(function (product) {
+        if (!product || typeof product !== 'object') return;
+        if (typeof product.image !== 'string' || !product.image.trim()) product.image = 'product-fallback.svg';
+      });
+      if (typeof renderProducts === 'function') {
+        try { renderProducts(); } catch (error) { console.warn('Éclat Atelier: renderProducts failed safely.', error); }
+      }
+      if (typeof renderCart === 'function') {
+        try { renderCart(); } catch (error) { console.warn('Éclat Atelier: renderCart failed safely.', error); }
+      }
+      return true;
+    } catch (error) {
+      console.warn('Éclat Atelier: optional image sync failed safely.', error);
+      return false;
+    }
   }
 
-  if (!sync()) {
+  function start() {
+    if (sync()) return;
     const timer = setInterval(function () {
       if (sync()) clearInterval(timer);
-    }, 50);
+    }, 100);
     setTimeout(function () { clearInterval(timer); }, 10000);
   }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+  else start();
 })();
