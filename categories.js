@@ -22,16 +22,13 @@
     const style = document.createElement('style');
     style.id = 'eclat-editorial-overrides';
     style.textContent = `
-      /* Hero */
       .hero-copy h1{max-width:680px}
       .hero-copy .hero-text{max-width:560px;font-family:Inter,Arial,sans-serif;font-size:16px;line-height:1.65;color:#514b43}
       .eclat-why{margin-top:34px}
-      .eclat-why-title{font:600 8px/1 Inter,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#81776a;margin-bottom:15px}
+      .eclat-why-title{display:none!important}
       .eclat-why-list{display:flex;flex-wrap:wrap;gap:20px 30px}
       .eclat-why-list span{font:500 9px/1.5 Inter,Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5d564c}
       .eclat-why-list span:before{content:'✦';margin-right:8px;font-size:8px}
-
-      /* Scent editorial tiles */
       .collections .section-head .eyebrow{font-size:8px;letter-spacing:.22em}
       .collections .section-head h2{margin-top:8px}
       .collection-grid{gap:10px}
@@ -46,8 +43,6 @@
       .collection-card strong{position:relative;z-index:2;text-shadow:0 2px 18px rgba(0,0,0,.22)}
       .collection-card small{position:relative;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.2)}
       .collections .text-link{font-size:9px}
-
-      /* Clean catalogue section */
       .shop .shop-head{display:block}
       .shop .shop-head>div:first-child .eyebrow{display:none}
       .shop .shop-head h2{margin:0 0 34px}
@@ -116,65 +111,22 @@
     const tools = shop && shop.querySelector('.shop-tools');
     if (!shop || !tools) return;
     if (document.querySelector('.eclat-filter-bar')) return;
-
     const bar = document.createElement('div');
     bar.className = 'eclat-filter-bar';
     bar.innerHTML = `
-      <div class="eclat-filter-group">
-        <span class="eclat-filter-label">CATEGORIES</span>
-        <div class="eclat-filter-buttons eclat-category-buttons">
-          <button class="eclat-category-btn eclat-category-btn active" data-category="all">All fragrances</button>
-          <button class="eclat-category-btn" data-category="middle-eastern">Middle Eastern</button>
-          <button class="eclat-category-btn" data-category="designer">Designer</button>
-          <button class="eclat-category-btn" data-category="niche">Niche</button>
-        </div>
-      </div>
-      <div class="eclat-filter-group">
-        <span class="eclat-filter-label">SHOP BY</span>
-        <div class="eclat-filter-buttons eclat-gender-buttons">
-          <button class="eclat-gender-btn active" data-gender="all">All</button>
-          <button class="eclat-gender-btn" data-gender="Men">Men</button>
-          <button class="eclat-gender-btn" data-gender="Women">Women</button>
-          <button class="eclat-gender-btn" data-gender="Unisex">Unisex</button>
-        </div>
-      </div>
-      <div class="eclat-filter-group">
-        <label class="eclat-filter-label" for="eclatBrandSearch">SEARCH BRANDS</label>
-        <input id="eclatBrandSearch" class="eclat-brand-search" type="search" placeholder="Search for a brand..." autocomplete="off">
-      </div>`;
+      <div class="eclat-filter-group"><span class="eclat-filter-label">CATEGORIES</span><div class="eclat-filter-buttons eclat-category-buttons"><button class="eclat-category-btn eclat-category-btn active" data-category="all">All fragrances</button><button class="eclat-category-btn" data-category="middle-eastern">Middle Eastern</button><button class="eclat-category-btn" data-category="designer">Designer</button><button class="eclat-category-btn" data-category="niche">Niche</button></div></div>
+      <div class="eclat-filter-group"><span class="eclat-filter-label">SHOP BY</span><div class="eclat-filter-buttons eclat-gender-buttons"><button class="eclat-gender-btn active" data-gender="all">All</button><button class="eclat-gender-btn" data-gender="Men">Men</button><button class="eclat-gender-btn" data-gender="Women">Women</button><button class="eclat-gender-btn" data-gender="Unisex">Unisex</button></div></div>
+      <div class="eclat-filter-group"><label class="eclat-filter-label" for="eclatBrandSearch">SEARCH BRANDS</label><input id="eclatBrandSearch" class="eclat-brand-search" type="search" placeholder="Search for a brand..." autocomplete="off"></div>`;
     const head = shop.querySelector('.shop-head');
     head.insertAdjacentElement('afterend', bar);
-
-    bar.querySelectorAll('.eclat-category-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (typeof currentFilter !== 'undefined') currentFilter = btn.dataset.category;
-        bar.querySelectorAll('.eclat-category-btn').forEach(function (x) { x.classList.toggle('active', x === btn); });
-        if (typeof renderProducts === 'function') renderProducts();
-      });
-    });
-    bar.querySelectorAll('.eclat-gender-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (typeof currentGender !== 'undefined') currentGender = btn.dataset.gender;
-        bar.querySelectorAll('.eclat-gender-btn').forEach(function (x) { x.classList.toggle('active', x === btn); });
-        const select = document.querySelector('#genderFilter');
-        if (select) select.value = btn.dataset.gender;
-        if (typeof renderProducts === 'function') renderProducts();
-      });
-    });
-
+    bar.querySelectorAll('.eclat-category-btn').forEach(function (btn) { btn.addEventListener('click', function () { if (typeof currentFilter !== 'undefined') currentFilter = btn.dataset.category; bar.querySelectorAll('.eclat-category-btn').forEach(function (x) { x.classList.toggle('active', x === btn); }); if (typeof renderProducts === 'function') renderProducts(); }); });
+    bar.querySelectorAll('.eclat-gender-btn').forEach(function (btn) { btn.addEventListener('click', function () { if (typeof currentGender !== 'undefined') currentGender = btn.dataset.gender; bar.querySelectorAll('.eclat-gender-btn').forEach(function (x) { x.classList.toggle('active', x === btn); }); const select = document.querySelector('#genderFilter'); if (select) select.value = btn.dataset.gender; if (typeof renderProducts === 'function') renderProducts(); }); });
     const brandSearch = bar.querySelector('#eclatBrandSearch');
-    if (brandSearch) brandSearch.addEventListener('input', function () {
-      const q = brandSearch.value.trim();
-      if (typeof searchTerm !== 'undefined') searchTerm = q;
-      if (typeof renderProducts === 'function') renderProducts();
-    });
+    if (brandSearch) brandSearch.addEventListener('input', function () { const q = brandSearch.value.trim(); if (typeof searchTerm !== 'undefined') searchTerm = q; if (typeof renderProducts === 'function') renderProducts(); });
   }
 
   function boot() {
-    if (typeof PRODUCTS === 'undefined' || typeof renderProducts !== 'function') {
-      setTimeout(boot, 50);
-      return;
-    }
+    if (typeof PRODUCTS === 'undefined' || typeof renderProducts !== 'function') { setTimeout(boot, 50); return; }
     addMiddleEastern();
     installStyles();
     if (typeof initBrandDirectory === 'function') initBrandDirectory();
@@ -183,15 +135,7 @@
     buildFilters();
     if (typeof renderProducts === 'function') renderProducts();
     const count = document.querySelector('#resultsCount');
-    if (count) {
-      const observer = new MutationObserver(function () {
-        const clean = document.querySelector('.eclat-results-count');
-        if (clean) clean.textContent = count.textContent;
-      });
-      observer.observe(count, {childList:true,subtree:true,characterData:true});
-    }
+    if (count) { const observer = new MutationObserver(function () { const clean = document.querySelector('.eclat-results-count'); if (clean) clean.textContent = count.textContent; }); observer.observe(count, {childList:true,subtree:true,characterData:true}); }
   }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
