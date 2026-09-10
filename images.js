@@ -1,56 +1,18 @@
-const ECLAT_IMAGES = {
-1:"https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dw24a244fd/Y0785220/Y0785220_F078524009_E01_RHC.jpg?sw=800",
-2:"https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dw9b0236e3/Y0000393/Y0000393_E000001556_E01_RHC.jpg?sw=800",
-3:"https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dwc1455521/Y0998031/Y0998031_C099800245_E01_RHC.jpg?sw=800",
-4:"https://www.chanel.com/images/q_auto:good,f_auto,dpr_1.0/w_640,c_scale,c_limit/COCO-MADEMOISELLE-EAU-DE-PARFUM-REFILLABLE-spray-3-4FL-OZ--packshot-default-116520-884014.jpg",
-5:"https://cdn.riah.ae/storage/upload/images/2023/06/27/649b16ff48472.jpg",
-6:"https://www.mammachetest.com/wp-content/media/reviews/photos/original/c6/d1/25/n5-edp-one-88-1591725466.jpg",
-7:"https://www.yslbeauty.ch/dw/image/v2/AAQP_PRD/on/demandware.static/-/Sites-ysl-master-catalog/default/dw57601925/Fragrance/Black_Opium/Black%20Opium%20Refresh%20Assets/3614271969477%20BO%20EDP%20150ML.jpg",
-8:"https://media.cdn.kaufland.de/product-images/1024x1024/2d69291f32077b09771d39abdd65f319.jpg",
-9:"https://beautyhouse.com/cdn/shop/files/01bdmtewnr.jpg?v=1760981447&width=1492",
-10:"https://beautyhouse.com/cdn/shop/files/01_4bc5fd59-50de-485e-a65c-a6bb6b1b6be7.png?v=1762970498&width=1600",
-11:"https://hollywoodperfumeria.com/cdn/shop/files/PORTADA_9d5fc4f4-ae6e-45d2-8d3d-14f8af535eea.jpg?v=1692159656&width=1445",
-12:"https://beautyhouse.com/cdn/shop/files/01yneycxc3.png?v=1772136404&width=1600",
-13:"https://scentsamples.uk.com/cdn/shop/files/B68EDF42-522D-4E19-9433-EA057217E4F1_adb8f892-9e8e-44e5-8980-47bf5c8a94ed.jpg?v=1769958316",
-14:"https://vader-prod.s3.amazonaws.com/1680705223-1-642d86c34fd81.png",
-15:"https://www.edgars.co.za/cdn/shop/files/690251122189_myrrhtonka_50ml_1_2.jpg?v=1738327075",
-16:"https://www.pieper.de/media/image/b2/00/01/CREED_Aventus_EdP_100ml.jpg",
-17:"https://www.creedperfume.com.au/cdn/shop/files/originalsantal100mlpdp_1400x.png?v=1739490235",
-18:"https://www.tryoutyourscent.com/cdn/shop/files/template_c5ad4286-5581-47c5-b6f1-e22441841c94.jpg?v=1754156654",
-19:"https://cdn.media.amplience.net/i/frasersdev/77843369_o_a2.jpg?v=20240417083654",
-20:"https://boutiquederoyal.com/cdn/shop/files/1_54ef82e8-aa27-413c-a014-d5cc303c0efa_1400x.jpg?v=1752325086",
-21:"https://scentira.in/cdn/shop/files/1_6087dab7-1251-4423-a07f-5fe5610b0953_grande.png?v=1763107202",
-22:"https://www.atticadps.gr/images/h2160/8/jpg/files/products/888066024082/1.jpg",
-23:"https://cdn.mos.cms.futurecdn.net/7JPtLkBYVBX9q5r5DzUzxC.jpg",
-24:"https://felix.com.pa/cdn/shop/files/T0MA01_1200x.png?v=1732659603",
-25:"https://cdn.ludwigbeck.de/products/102052172/102052172-1.jpg?vh=9e9bd6",
-26:"https://www.nk.se/globalassets/811901028907.jpg?format=jpg&quality=85",
-27:"https://cdn-1.debijenkorf.nl/web_detail_2x/le-labo-bergamote-22-eau-de-parfum/?reference=024%2F500%2F0245009021000000_pro_flt_frt_01_1108_1528_1708593558.jpg",
-28:"https://cdn.atacadoconnect.com/produtos/1264173/perfume-parfums-de-marly-delina-eau-de-parfum-feminino-75ml-1264173-64917.jpg",
-29:"https://cdn11.bigcommerce.com/s-mqq1i1xa2c/images/stencil/500x659/products/82856/5542688/747342_NA_1__49784.1700506121.jpg?c=1",
-30:"https://www.parfuemerie-heudorf-shop.de/media/08/3d/49/1699028663/Marly%20Herod%20125ml.jpg",
-31:"https://www.heavenscent.no/cdn/shop/files/3700559605370_OUD_SATIN_MOOD_EDP_200ML_3.jpg?v=1771576352&width=2000",
-32:"https://beautyhouse.com/cdn/shop/files/01_e0884ff3-6f56-4dfe-a858-ba7cb612fc61.jpg?v=1728929665&width=1600",
-33:"https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-26T110638.726.png?v=1730150953&width=1024",
-34:"https://fragrantsouq.com/cdn/shop/files/GiorgioArmaniGiorgioArmanicode125mlParfumMenPerfume_700x700.jpg?v=1743067275",
-35:"https://www.giorgioarmanibeauty.com.tw/dw/image/v2/AARM_PRD/on/demandware.static/-/Sites-armani-master-catalog/zh_TW/dwe8f64da7/products/ww-00343-arm/50ml/armani_armani-beauty-my-way-edp_3614272907676_50ml.jpg",
-36:"https://www.beautyjulia.com/pt/33629-large_default/adgh-profondo-edp-v.jpg",
-37:"https://acdn-us.mitiendanube.com/stores/002/180/589/products/la-vie-est-belle-edp1-481f1b4a2be7ac50e817373849515362-1024-1024.png",
-38:"https://cdn.fragrancenet.com/images/photos/600x600/386798.jpg",
-39:"https://parfumprobenportal.de/cdn/shop/files/CarolinaHerrera_GoodGirl.png?v=1730383591",
-40:"https://static.zattini.com.br/produtos/perfume-masculino-212-vip-men-carolina-herrera-eau-de-toilette-200ml/60/L73-0033-460/L73-0033-460_zoom1.jpg?ts=1779462761",
-41:"https://douglas.bg/media/catalog/product/cache/9e23ad7e9bb5a86c6c5cb977e46b805e/1/-/1-8f4376985b8a88e763634f659d9c8978.jpg",
-42:"https://www.parfumerie.com.ar/pub/media/catalog/product/1/5/158602-a-born-in-roma-uomo-men-edt-50ml.jpg",
-43:"https://bogart-april-storage.omn.proximis.com/Imagestorage/imagesSynchro/0/0/583ee03651b9a9d1750a5fa69072bda5214d852b_d1726632-37aa-4be4-be8e-front.jpeg",
-44:"https://media.bulgari.com/image/upload/c_fill,h_1090,w_651/q_auto/f_auto/1675261.jpg",
-45:"https://media.bulgari.com/image/upload/c_fill,h_1090,w_1090/q_auto/f_auto/1719598.png",
-46:"https://media.vogue.co.jp/photos/67a43f7ef0c44e800273cb5e/master/w_1600%2Cc_limit/PR-888066000062_BLACK_ORCHID_50ML_S.jpg",
-47:"https://skins.co.za/media/catalog/product/cache/b4b84a21ad650f51ef0482fbeef95ff1/e/s/escentric_molecules_molecule_01_5060103310029_1.png",
-48:"https://acdn-us.mitiendanube.com/stores/001/167/965/products/mojave-dcaef44b66c1449c5717504209545657-1024-1024.webp",
-49:"https://media.thescentbase.com/perfumes/bal-d-afrique-byredo.jpg",
-50:"https://static.thcdn.com/productimg/original/13309762-1014896492821403.jpg"
-};
+/* Éclat Atelier — image synchronization safety layer */
+(function () {
+  function sync() {
+    if (typeof PRODUCTS === 'undefined' || typeof renderProducts !== 'function') return false;
+    /* Product images are defined with each catalog entry. This file intentionally
+       does not overwrite them or assume PRODUCTS exists before legacy-script.js. */
+    renderProducts();
+    if (typeof renderCart === 'function') renderCart();
+    return true;
+  }
 
-Object.entries(ECLAT_IMAGES).forEach(([id,url])=>{const p=PRODUCTS.find(x=>x.id===Number(id));if(p)p.image=url;});
-if(typeof renderProducts==='function')renderProducts();
-if(typeof renderCart==='function')renderCart();
+  if (!sync()) {
+    const timer = setInterval(function () {
+      if (sync()) clearInterval(timer);
+    }, 50);
+    setTimeout(function () { clearInterval(timer); }, 10000);
+  }
+})();
