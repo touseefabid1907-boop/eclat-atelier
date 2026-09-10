@@ -135,7 +135,6 @@ p {
   }
 }
 
-/* Product cards are rendered dynamically, so apply the same subtle entrance animation without changing product rendering. */
 .product-card {
   animation: fadeInUp 0.6s ease forwards;
 }
@@ -147,7 +146,6 @@ p {
   }
 }
 
-/* Premium Brand Story */
 .brand-story {
   padding: 80px 0;
   background: #fafafa;
@@ -191,7 +189,6 @@ p {
   color: #444;
 }
 
-/* Luxury spacing and layout rhythm */
 .premium-header {
   margin-top: 10px;
 }
@@ -285,4 +282,11 @@ section {
 .product-filter-bar button:hover {
   background: #f0f0f0;
   border-color: #ccc;
+}
+
+/* External perfume packshots */
+.product-card img {
+  object-fit: contain;
+  width: 100%;
+  height: 260px;
 }
