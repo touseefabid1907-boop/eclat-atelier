@@ -3,11 +3,11 @@
   'use strict';
 
   var FALLBACK_IMAGE = 'product-fallback.svg';
-  var OPTIONAL_FILES = ['legacy-script.js', 'categories.js', 'image-fixes.js'];
+  var OPTIONAL_FILES = ['legacy-script.js', 'categories.js', 'image-fixes.js', 'catalog-expansion.js'];
   var fallbackProducts = [
     {id:1,name:'Sauvage Eau de Parfum',house:'Dior',gender:'Men',notes:'Bergamot · Vanilla · Patchouli'},
     {id:16,name:'Aventus',house:'Creed',gender:'Men',notes:'Pineapple · Birch · Musk'},
-    {id:17,name:'Original Santal',house:'Creed',gender:'Unisex',notes:'Sandalwood · Cedar · Tonka Bean'},
+    {id:17,name:'Original Santal',house:'Creed',gender:'Unisex',notes:'Sandalwood · Cedar · Tonka'},
     {id:20,name:'Imagination',house:'Louis Vuitton',gender:'Unisex',notes:'Amber · Black Tea · Bergamot'},
     {id:22,name:'Oud Wood',house:'Tom Ford',gender:'Unisex',notes:'Oud · Rosewood · Cardamom'},
     {id:28,name:'Delina',house:'Parfums de Marly',gender:'Women',notes:'Lychee · Rose · Rhubarb'},
@@ -45,7 +45,7 @@
   }
 
   function escapeHTML(value) {
-    return String(value == null ? '' : value).replace(/[&<>'"]/g, function (ch) {
+    return String(value == null ? '' : value).replace(/[&<>'\"]/g, function (ch) {
       return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch];
     });
   }
@@ -135,84 +135,15 @@
     });
   }
 
-  function slugifyBrand(value) {
-    return String(value || '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '');
-  }
-
-  function ensureProductCategories() {
-    if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return;
-    PRODUCTS.forEach(function (product) {
-      if (!product || typeof product !== 'object') return;
-      var categories = Array.isArray(product.categories) ? product.categories.slice() : [];
-      if (product.gender) categories.push(String(product.gender).toLowerCase());
-      if (product.type) categories.push(String(product.type).toLowerCase());
-      if (product.house) categories.push('brand:' + slugifyBrand(product.house));
-      if (Array.isArray(product.tags)) {
-        product.tags.forEach(function (tag) {
-          if (tag) categories.push(String(tag).toLowerCase());
-        });
-      }
-      product.categories = categories.filter(function (value, index, array) {
-        return value && array.indexOf(value) === index;
-      });
-    });
-  }
-
-  function renderSelectedProducts(selected) {
-    if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS) || typeof renderProducts !== 'function') return;
-    var allProducts = PRODUCTS.slice();
-    try {
-      PRODUCTS.splice.apply(PRODUCTS, [0, PRODUCTS.length].concat(selected));
-      renderProducts();
-    } catch (error) {
-      try { console.warn('Éclat Atelier: filtered catalog render recovered.', error); } catch (_) {}
-    } finally {
-      PRODUCTS.splice.apply(PRODUCTS, [0, PRODUCTS.length].concat(allProducts));
-    }
-  }
-
-  function renderFeatured() {
-    if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return;
-    renderSelectedProducts(PRODUCTS.filter(function (product) { return product && product.featured === true; }));
-  }
-
-  function renderByCategory(category) {
-    if (typeof PRODUCTS === 'undefined' || !Array.isArray(PRODUCTS)) return;
-    var selectedCategory = String(category || '').toLowerCase();
-    renderSelectedProducts(PRODUCTS.filter(function (product) {
-      return product && Array.isArray(product.categories) && product.categories.indexOf(selectedCategory) !== -1;
-    }));
-  }
-
-  function installProductFilterBar() {
-    var buttons = document.querySelectorAll('.product-filter-bar button');
-    if (!buttons.length) return;
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var filter = btn.getAttribute('data-filter');
-        if (filter === 'featured') {
-          renderFeatured();
-        } else {
-          renderByCategory(filter);
-        }
-        buttons.forEach(function (item) { item.classList.toggle('active', item === btn); });
-      });
-    });
-  }
-
   function finish() {
     try {
       if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
-        ensureProductCategories();
         PRODUCTS.forEach(function (p) {
           if (!p || typeof p !== 'object') return;
           if (typeof p.image !== 'string' || !p.image.trim() || /^https?:\/\//i.test(p.image)) p.image = FALLBACK_IMAGE;
         });
       }
-      if (typeof renderProducts === 'function') {
-        try { renderFeatured(); } catch (error) { console.warn('Éclat Atelier: catalog render recovered.', error); }
-      }
-      installProductFilterBar();
+      if (typeof renderProducts === 'function') { try { renderProducts(); } catch (error) { console.warn('Éclat Atelier: catalog render recovered.', error); } }
       if (typeof renderCart === 'function') { try { renderCart(); } catch (error) { console.warn('Éclat Atelier: cart render recovered.', error); } }
     } catch (error) {
       try { console.warn('Éclat Atelier: final optional recovery failed safely.', error); } catch (_) {}
