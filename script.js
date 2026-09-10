@@ -82,14 +82,9 @@
 
   function sanitize(source, file) {
     var code = String(source || '');
-    if (file === 'legacy-script.js' || file === 'categories.js') {
-      code = code.replace(/image\s*:\s*(["'])(?:https?:)?\/\/[^"']*\1/g, 'image:"' + FALLBACK_IMAGE + '"');
-    }
     if (file === 'legacy-script.js') {
-      code = code.replace(/let cart=JSON\.parse\(localStorage\.getItem\("eclatCart"\)\|\|"\[\]"\);/,
-        'let cart=safeEclatCart();');
-      code = code.replace(/let wishlist=JSON\.parse\(localStorage\.getItem\("eclatWishlist"\)\|\|"\[\]"\);/,
-        'let wishlist=safeEclatWishlist();');
+      code = code.replace(/let cart=JSON\.parse\(localStorage\.getItem\("eclatCart"\)\|\|"\[\]"\);/, 'let cart=safeEclatCart();');
+      code = code.replace(/let wishlist=JSON\.parse\(localStorage\.getItem\("eclatWishlist"\)\|\|"\[\]"\);/, 'let wishlist=safeEclatWishlist();');
       code = 'function safeEclatCart(){try{var v=JSON.parse(localStorage.getItem("eclatCart")||"[]");return Array.isArray(v)?v:[]}catch(_){return []}}\n' +
              'function safeEclatWishlist(){try{var v=JSON.parse(localStorage.getItem("eclatWishlist")||"[]");return Array.isArray(v)?v:[]}catch(_){return []}}\n' + code;
     }
@@ -115,9 +110,7 @@
   function loadText(file) {
     return new Promise(function (resolve) {
       var settled = false;
-      var timer = setTimeout(function () {
-        if (!settled) { settled = true; resolve(null); }
-      }, 8000);
+      var timer = setTimeout(function () { if (!settled) { settled = true; resolve(null); } }, 8000);
       try {
         fetch(file, {cache:'no-store'}).then(function (response) {
           if (!response || !response.ok) throw new Error(String(response && response.status || 'load failed'));
@@ -140,7 +133,7 @@
       if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) {
         PRODUCTS.forEach(function (p) {
           if (!p || typeof p !== 'object') return;
-          if (typeof p.image !== 'string' || !p.image.trim() || /^https?:\/\//i.test(p.image)) p.image = FALLBACK_IMAGE;
+          if (typeof p.image !== 'string' || !p.image.trim()) p.image = FALLBACK_IMAGE;
         });
       }
       if (typeof renderProducts === 'function') { try { renderProducts(); } catch (error) { console.warn('Éclat Atelier: catalog render recovered.', error); } }
@@ -155,9 +148,7 @@
     var chain = Promise.resolve();
     OPTIONAL_FILES.forEach(function (file) {
       chain = chain.then(function () {
-        return loadText(file).then(function (source) {
-          if (source) executeOptionalSource(source, file);
-        });
+        return loadText(file).then(function (source) { if (source) executeOptionalSource(source, file); });
       });
     });
     chain.then(finish).catch(function () { finish(); });
