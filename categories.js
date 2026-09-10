@@ -9,6 +9,7 @@
     {id:56,name:"Yara",house:"Lattafa",type:"middle-eastern",gender:"Women",tags:["floral","amber"],notes:"Orchid · Heliotrope · Vanilla · Musk",tone:5}
   ];
   middleEastern.forEach(p=>{if(!PRODUCTS.some(x=>x.id===p.id))PRODUCTS.push(p);});
+  initBrandDirectory();
 
   const tools=document.querySelector('.shop-tools');
   if(!tools) return;
