@@ -285,3 +285,59 @@
     flex-direction: column !important;
     gap: 20px !important;
 }
+
+/* Target the REAL Shopify modal image container */
+.ProductItemModal__Image,
+.ProductItemModal__ImageWrapper,
+.ProductItemModal__Media,
+.ProductItemModal__MediaWrapper {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Target the REAL modal image element */
+.ProductItemModal__Image img,
+.ProductItemModal__Media img,
+.ProductItemModal__ImageWrapper img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove unwanted borders/lines around modal */
+.ProductItemModal,
+.ProductItemModal__Content,
+.ProductItemModal__Wrapper,
+.ProductItemModal__Image,
+.ProductItemModal__Media {
+    border: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Remove padding that creates visual lines */
+.ProductItemModal,
+.ProductItemModal__Content,
+.ProductItemModal__Wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure modal layout stays clean */
+.ProductItemModal__Content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
