@@ -26,30 +26,30 @@
   padding: 0 20px;
 }
 
-/* Reduce Story box height and tighten spacing */
+/* Make Story box significantly smaller and tighter */
 .section-story {
-    max-width: 420px !important;
+    max-width: 360px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding: 18px 22px !important;
+    padding: 14px 18px !important;
     border-radius: 10px !important;
-    background-color: #f4efe8 !important;
+    background-color: #f2ece4 !important;
     text-align: center !important;
 }
 
-/* Refine Story text for compact premium feel */
+/* Compact premium text */
 .section-story p {
     font-size: 14px !important;
-    line-height: 1.5 !important;
+    line-height: 1.45 !important;
     color: #4a4a4a !important;
     margin-top: 6px !important;
 }
 
-/* Refine Story heading */
+/* Compact heading */
 .section-story h2,
 .section-story .section-title {
-    font-size: 20px !important;
+    font-size: 19px !important;
     font-weight: 600 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
     color: #2f2f2f !important;
 }
