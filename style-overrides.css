@@ -193,3 +193,45 @@
     margin: 0 !important;
     color: #3f3f3f !important;
 }
+
+/* Remove bottom border/divider from FAQ section */
+.faq,
+.faq-section,
+.faq-wrapper,
+.faq-container,
+.faq-item,
+.faq-list {
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Remove bottom padding/margin that creates a visual line */
+.faq,
+.faq-section,
+.faq-wrapper,
+.faq-container,
+.faq-list {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ensure FAQ items do not create a divider line */
+.faq-item {
+    border: none !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Keep Story rectangle clean and attached */
+.story-fullwidth {
+    background-color: #f3e9dd !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 180px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
