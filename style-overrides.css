@@ -392,3 +392,29 @@
     flex-direction: column !important;
     gap: 20px !important;
 }
+
+/* FINAL FIX — override the last Shopify modal image container */
+.ProductItemModal__MediaItem {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;       /* stop cropping */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Ensure the image inside MediaItem is never cropped */
+.ProductItemModal__MediaItem img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;      /* full bottle visible */
+    display: block !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+}
