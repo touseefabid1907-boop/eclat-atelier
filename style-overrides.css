@@ -1,0 +1,27 @@
+/* Minimal top-section and Our Story corrections */
+.announcement-bar {
+  padding: 8px 0;
+}
+
+.announcement-inner {
+  font-size: 10px;
+  text-align: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 34px;
+}
+
+.nav-links a {
+  margin-left: 0;
+}
+
+.brand-story {
+  margin-top: 0;
+}
+
+.brand-story-inner {
+  margin: 0 auto;
+  padding: 0 20px;
+}
