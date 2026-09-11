@@ -1,8 +1,5 @@
 const PRODUCTS = [
-{id:1,name:"Sauvage Eau de Parfum",house:"Dior",type:"designer",gender:"Men",tags:["fresh","woody"],notes:"Bergamot · Vanilla · Patchouli",tone:1,featured:true,image:"https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dw24a244fd/Y0785220/Y0785220_F078524009_E01_RHC.jpg?sw=800"},
-{id:3,name:"J'adore Eau de Parfum",house:"Dior",type:"designer",gender:"Women",tags:["floral"],notes:"Ylang-Ylang · Jasmine · Rose",tone:5,image:"https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Sites-master_dior/default/dwc1455521/Y0998031/Y0998031_C099800245_E01_RHC.jpg?sw=800"},
-{id:22,name:"Oud Wood",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Oud · Rosewood · Cardamom · Amber",tone:8,featured:true,image:"https://www.atticadps.gr/images/h2160/8/jpg/files/products/888066024082/1.jpg"},
-{id:30,name:"Herod",house:"Parfums de Marly",type:"niche",gender:"Men",tags:["woody","amber"],notes:"Cinnamon · Tobacco · Vanilla · Cedar",tone:4,image:"https://www.parfuemerie-heudorf-shop.de/media/08/3d/49/1699028663/Marly%20Herod%20125ml.jpg"}
+{id:22,name:"Oud Wood",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Oud · Rosewood · Cardamom · Amber",tone:8,featured:true,image:"https://www.atticadps.gr/images/h2160/8/jpg/files/products/888066024082/1.jpg"}
 ];
 const SIZES={2:{label:"2ml",price:8},5:{label:"5ml",price:20},10:{label:"10ml",price:30}};
 let cart=JSON.parse(localStorage.getItem("eclatCart")||"[]");
