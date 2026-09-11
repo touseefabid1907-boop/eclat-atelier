@@ -25,3 +25,30 @@
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* Reduce Story box height and tighten spacing */
+.section-story {
+    max-width: 520px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 24px 28px !important;
+    border-radius: 10px !important;
+    background-color: #f7f3ee !important;
+    text-align: center !important;
+}
+
+/* Refine Story text for premium feel */
+.section-story p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #4a4a4a !important;
+}
+
+/* Refine Story heading */
+.section-story h2,
+.section-story .section-title {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    color: #2f2f2f !important;
+}
