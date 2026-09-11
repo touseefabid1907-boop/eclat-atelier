@@ -98,3 +98,37 @@
     padding: 0 !important;
     color: #2c2c2c !important;
 }
+
+/* Full-width rectangle container */
+.story-fullwidth {
+    width: 100% !important;             /* fill entire page width */
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #f3e9dd !important; /* beige theme rectangle */
+}
+
+/* Story content fills the rectangle */
+.story-relocated {
+    width: 100% !important;             /* full width inside rectangle */
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 40px 20px !important;      /* balanced spacing inside rectangle */
+    background: none !important;
+    text-align: center !important;
+}
+
+/* Heading */
+.story-relocated h2 {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    margin: 0 0 12px 0 !important;
+    color: #2c2c2c !important;
+}
+
+/* Paragraph */
+.story-relocated p {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    color: #3f3f3f !important;
+}
