@@ -101,18 +101,18 @@
 
 /* Full-width rectangle container */
 .story-fullwidth {
-    width: 100% !important;             /* fill entire page width */
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #f3e9dd !important; /* beige theme rectangle */
+    background-color: #f3e9dd !important;
 }
 
 /* Story content fills the rectangle */
 .story-relocated {
-    width: 100% !important;             /* full width inside rectangle */
+    width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 40px 20px !important;      /* balanced spacing inside rectangle */
+    padding: 40px 20px !important;
     background: none !important;
     text-align: center !important;
 }
@@ -122,6 +122,67 @@
     font-size: 22px !important;
     font-weight: 600 !important;
     margin: 0 0 12px 0 !important;
+    color: #2c2c2c !important;
+}
+
+/* Paragraph */
+.story-relocated p {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+    color: #3f3f3f !important;
+}
+
+/* Remove ALL borders, divider lines, and background strips */
+.story-fullwidth,
+.shopify-section,
+.section,
+.section-story,
+.section-story-wrapper,
+.section-story-container {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Remove ALL padding/margins that create visual lines */
+.story-fullwidth,
+.shopify-section,
+.section,
+.section-story,
+.section-story-wrapper,
+.section-story-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure the beige rectangle is clean and uniform */
+.story-fullwidth {
+    width: 100% !important;
+    background-color: #f3e9dd !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 180px !important;
+}
+
+/* Story content fills the rectangle */
+.story-relocated {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    text-align: center !important;
+}
+
+/* Heading */
+.story-relocated h2 {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    margin: 0 0 10px 0 !important;
     color: #2c2c2c !important;
 }
 
