@@ -341,3 +341,54 @@
     flex-direction: column !important;
     gap: 20px !important;
 }
+
+/* FINAL FIX — hidden Shopify modal image classes */
+.ProductItemModal__Media--image,
+.ProductItemModal__MediaContainer {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Ensure the actual modal image is never cropped */
+.ProductItemModal__Media--image img,
+.ProductItemModal__MediaContainer img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove ALL borders/lines from modal wrapper */
+.ProductItemModal,
+.ProductItemModal__Content,
+.ProductItemModal__Wrapper {
+    border: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Remove padding that creates visual lines */
+.ProductItemModal,
+.ProductItemModal__Content,
+.ProductItemModal__Wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Clean modal layout */
+.ProductItemModal__Content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
