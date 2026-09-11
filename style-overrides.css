@@ -26,37 +26,39 @@
   padding: 0 20px;
 }
 
-/* Remove ALL outer spacing around the Story section */
+/* Remove ALL outer spacing from ALL Story containers */
 .section-story,
 .section-story-container,
-.section-story-wrapper {
+.section-story-wrapper,
+.shopify-section,
+.section {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
 
-/* Make Story box height fit text exactly */
+/* Force Story block to shrink to exact text height */
 .section-story {
-    max-width: 340px !important;
+    max-width: 320px !important;
     margin-left: auto !important;
     margin-right: auto !important;
 
-    padding: 8px 14px !important;
-    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
 
-    /* New lighter theme-consistent background */
-    background-color: #faf7f2 !important;
+    /* NEW background color (lighter, theme-consistent) */
+    background-color: #fffdf8 !important;
 
     text-align: center !important;
 }
 
-/* Remove extra spacing inside text */
+/* Remove ALL extra spacing inside text */
 .section-story p {
     font-size: 14px !important;
     line-height: 1.35 !important;
     margin: 0 !important;
-    color: #4a4a4a !important;
+    color: #3f3f3f !important;
 }
 
 /* Compact heading */
@@ -66,5 +68,5 @@
     font-weight: 600 !important;
     margin-top: 0 !important;
     margin-bottom: 4px !important;
-    color: #2f2f2f !important;
+    color: #2c2c2c !important;
 }
