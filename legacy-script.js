@@ -1,5 +1,10 @@
 const PRODUCTS = [
-{id:22,name:"Oud Wood",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Oud · Rosewood · Cardamom · Amber",tone:8,featured:true,image:"https://www.atticadps.gr/images/h2160/8/jpg/files/products/888066024082/1.jpg"}
+{id:22,name:"Oud Wood",house:"Tom Ford",type:"designer",gender:"Unisex",tags:["woody","amber"],notes:"Oud · Rosewood · Cardamom · Amber",tone:8,featured:true,image:"https://www.atticadps.gr/images/h2160/8/jpg/files/products/888066024082/1.jpg"},
+{id:57,name:"Oud Silk Mood Extrait",house:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["woody","floral"],notes:"Oud · Rose · Papyrus · Blue Chamomile",tone:8,image:"https://bakhachegroup.com.my/cdn/shop/files/3700559613092_OUD_SILK_MOOD_EXT_70ML_1.png?v=1768978305&width=1946"},
+{id:58,name:"Grand Soir",house:"Maison Francis Kurkdjian",type:"niche",gender:"Unisex",tags:["amber","woody"],notes:"Labdanum · Lavender · Cinnamon · Amber · Vanilla",tone:4,image:"https://www.franciskurkdjian.com/dw/image/v2/BJSB_PRD/on/demandware.static/-/Sites-mfk-master-catalog/default/dwf271d704/GRAND_SOIR/FRAGRANCE/3700559614242_GRAND_SOIR_EDP_70ML_1.png?q=85&sfrm=png&sh=500&strip=true&sw=500"},
+{id:59,name:"Dior Homme Parfum",house:"Dior",type:"designer",gender:"Men",tags:["woody","amber"],notes:"Iris · Amber · Patchouli · Vetiver",tone:4,image:"https://assets.hondoscenter.com/FTP/3348901682534_P_1.jpg?version=1738230134"},
+{id:60,name:"Sauvage Extrait",house:"Dior",type:"designer",gender:"Men",tags:["woody","amber"],notes:"Spices · Lavender · Woods",tone:7,image:"https://cdn.aromo.ru/upload/resize_cache/iblock/7bd/grpowzf7udj6h7gqf73bzytypn3u05ob/450_450_040cd750bba9870f18aada2478b24840a/dior-sauvage-extrait-2026-male-2527244.jpg"},
+{id:61,name:"Original Santal",house:"Creed",type:"niche",gender:"Unisex",tags:["woody","amber"],notes:"Sandalwood · Cinnamon · Vanilla · Tonka Bean",tone:4,image:"https://www.creedperfume.com.au/cdn/shop/files/originalsantal100mlpdp_1400x.png?v=1739490235"}
 ];
 const SIZES={2:{label:"2ml",price:8},5:{label:"5ml",price:20},10:{label:"10ml",price:30}};
 let cart=JSON.parse(localStorage.getItem("eclatCart")||"[]");
