@@ -26,30 +26,39 @@
   padding: 0 20px;
 }
 
-/* Make Story box significantly smaller and tighter */
+/* Make Story box height auto-fit the text with minimal padding */
 .section-story {
     max-width: 360px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding: 14px 18px !important;
-    border-radius: 10px !important;
+
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+
+    border-radius: 8px !important;
+
+    /* Theme-consistent warm neutral background */
     background-color: #f2ece4 !important;
+
     text-align: center !important;
 }
 
 /* Compact premium text */
 .section-story p {
     font-size: 14px !important;
-    line-height: 1.45 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
     color: #4a4a4a !important;
-    margin-top: 6px !important;
 }
 
 /* Compact heading */
 .section-story h2,
 .section-story .section-title {
-    font-size: 19px !important;
+    font-size: 18px !important;
     font-weight: 600 !important;
-    margin-bottom: 8px !important;
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
     color: #2f2f2f !important;
 }
