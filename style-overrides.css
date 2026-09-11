@@ -235,3 +235,53 @@
     justify-content: center !important;
     align-items: center !important;
 }
+
+/* Fix modal image container */
+.product-modal-image {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: none !important;
+    border: none !important;
+}
+
+/* Fix modal image sizing */
+.modal-img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove unwanted borders/lines around modal */
+.product-modal,
+.product-modal-content,
+.product-modal-wrapper,
+.product-modal-image,
+.product-modal-details {
+    border: none !important;
+    box-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Remove padding that creates visual lines */
+.product-modal,
+.product-modal-content,
+.product-modal-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure modal layout stays clean */
+.product-modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
