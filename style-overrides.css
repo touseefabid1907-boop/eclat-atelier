@@ -26,29 +26,35 @@
   padding: 0 20px;
 }
 
-/* Make Story box height auto-fit the text with minimal padding */
+/* Remove ALL outer spacing around the Story section */
+.section-story,
+.section-story-container,
+.section-story-wrapper {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Make Story box height fit text exactly */
 .section-story {
-    max-width: 360px !important;
+    max-width: 340px !important;
     margin-left: auto !important;
     margin-right: auto !important;
 
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    padding-left: 14px !important;
-    padding-right: 14px !important;
-
+    padding: 8px 14px !important;
     border-radius: 8px !important;
 
-    /* Theme-consistent warm neutral background */
-    background-color: #f2ece4 !important;
+    /* New lighter theme-consistent background */
+    background-color: #faf7f2 !important;
 
     text-align: center !important;
 }
 
-/* Compact premium text */
+/* Remove extra spacing inside text */
 .section-story p {
     font-size: 14px !important;
-    line-height: 1.4 !important;
+    line-height: 1.35 !important;
     margin: 0 !important;
     color: #4a4a4a !important;
 }
@@ -59,6 +65,6 @@
     font-size: 18px !important;
     font-weight: 600 !important;
     margin-top: 0 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 4px !important;
     color: #2f2f2f !important;
 }
